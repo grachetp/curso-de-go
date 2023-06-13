@@ -35,4 +35,16 @@ func main() {
 	fmt.Println(true && true)  //And
 	fmt.Println(true || false) //Or
 	fmt.Println(!true)         //Not
+
+	//Unários
+	numero := 10
+	numero++     //numero = numero + 1
+	numero--     //numero = numero - 1
+	numero += 10 //numero = numero + 15
+	numero -= 10 //numero = numero - 10
+	numero *= 3  //numero = numero * 3
+	numero /= 2  //numero = numero / 10
+
+	//Ternário
+
 }
