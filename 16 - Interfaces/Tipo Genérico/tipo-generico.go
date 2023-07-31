@@ -15,4 +15,6 @@ func main() {
 	fmt.Println()
 
 	mapa := map[interface{}]interface{}{}
+
+	fmt.Println("mapa")
 }
