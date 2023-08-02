@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 func main() {
@@ -25,7 +26,8 @@ func main() {
 }
 
 func escrever(texto string) {
-	for i := 0; i < 250; i++ {
+	for i := 0; i < 5; i++ {
 		fmt.Println(texto)
+		time.Sleep(time.Second)
 	}
 }
