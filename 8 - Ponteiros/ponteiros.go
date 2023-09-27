@@ -21,6 +21,10 @@ func main() {
 	variavel3 = 100
 	ponteiro = &variavel3
 
-	fmt.Println(variavel3, *ponteiro) //desreferenciação
+	fmt.Println(variavel3, ponteiro, *ponteiro) //desreferenciação
 
 }
+
+// var ponteiro *tipo -> define uma variável do tipo ponteiro
+// ponteiro = &variavel -> ponteiro recebe o endereço de memória da variável
+// fmt.Println(ponteiro, *ponteiro) -> escreve o ponteiro(Endereço de memória) e escreve o valor que está no ponteiro(valor do endereço de memória)
