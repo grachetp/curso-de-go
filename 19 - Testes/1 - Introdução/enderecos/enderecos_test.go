@@ -1,9 +1,10 @@
 // Teste de Unidade
 // Teste Unitário
 
-package enderecos
+package enderecos_test
 
 import (
+	. "introducao-testes/enderecos"
 	"testing"
 )
 
@@ -23,6 +24,8 @@ func TestTipoDeEndereco(t *testing.T) {
 	// 	t.Error("O tipo recebido é diferente do esperado!")
 	// 	t.Errorf("O tipo recebido é diferente do esperado!. Esperava %s e recebeu %s", tipoDeEnderecoEsperado, tipoDeEnderecoRecebido)
 	// }
+
+	t.Parallel()
 
 	cenariosDeTeste := []cenarioDeTeste{
 		{"Rua ABC", "rua"},
@@ -45,3 +48,10 @@ func TestTipoDeEndereco(t *testing.T) {
 }
 
 //commando> go test na pasta do teste
+
+func TestQualquer(t *testing.T) {
+	t.Parallel()
+	if 1 > 2 {
+		t.Error("Teste quebrou")
+	}
+}
