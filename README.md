@@ -973,3 +973,15 @@ func escrever(texto string) {
  }
 }
 ```
+
+### Comandos para testes
+
+```bash
+go test       #executa os testes somente do pacote atual
+go test ./... #executa todos os testes de todas as pastas
+go test -v    #modo verboso
+go test --cover #verifica a cobertura do código
+go test --coverprofile nomearquivo.txt #gera arquivo com taxa de cobertura
+go tool cover --func=nomearquivo.txt #trás a porcetagem de cada função está coberta
+go tool cover --html=nomearquivo.txt #gera um arquivo temporário com a cobertura linha a linha
+```
