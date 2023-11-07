@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crud/servidor"
 	"fmt"
 	"log"
 	"net/http"
@@ -10,6 +11,7 @@ import (
 
 func main() {
 	router := mux.NewRouter()
+	router.HandleFunc("/users", servidor.CreateUser).Methods(http.MethodPost)
 
 	fmt.Println("Listen on port 5000")
 	log.Fatal(http.ListenAndServe(":5000", router))
