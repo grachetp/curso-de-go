@@ -2,6 +2,7 @@ package banco
 
 import (
 	"database/sql"
+	"fmt"
 
 	_ "github.com/go-sql-driver/mysql" //driver connection
 )
@@ -18,7 +19,7 @@ func Connect() (*sql.DB, error) {
 	if err = db.Ping(); err != nil {
 		return nil, err
 	}
-
+	fmt.Println("Connection opened!")
 	return db, nil
 }
 

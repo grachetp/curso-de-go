@@ -119,7 +119,7 @@ func FindUsers(w http.ResponseWriter, r *http.Request) {
 	}
 	defer db.Close()
 
-	lines, err := db.Query("SELECT * FROM Users")
+	lines, err := db.Query("SELECT * FROM users")
 	if err != nil {
 		w.Write([]byte("Erro ao buscar os usuários"))
 		return
@@ -174,7 +174,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 
 	defer db.Close()
 
-	statement, err := db.Prepare("UPDATE USERS SET name = ?, email = ? where id = ?")
+	statement, err := db.Prepare("UPDATE users SET name = ?, email = ? where id = ?")
 	if err != nil {
 		w.Write([]byte("Erro ao criar o statement"))
 		return
@@ -183,6 +183,37 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 
 	if _, err := statement.Exec(user.Name, user.Email, ID); err != nil {
 		w.Write([]byte("Erro ao atualizar o usuário"))
+	}
+
+	w.WriteHeader(http.StatusNoContent)
+}
+
+func DeleteUser(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	ID, err := strconv.ParseUint(params["id"], 10, 32)
+	if err != nil {
+		w.Write([]byte("Erro ao converter o parametro para inteiro"))
+		return
+	}
+
+	db, err := banco.Connect()
+	if err != nil {
+		w.Write([]byte("Erro ao conectar no banco de dados"))
+		return
+	}
+	defer db.Close()
+
+	statement, err := db.Prepare("delete from users where id = ?")
+	if err != nil {
+		w.Write([]byte("Erro ao criar statment!"))
+		return
+	}
+
+	defer statement.Close()
+
+	if _, erro := statement.Exec(ID); erro != nil {
+		w.Write([]byte("Erro ao deletar usuario"))
+		return
 	}
 
 	w.WriteHeader(http.StatusNoContent)
