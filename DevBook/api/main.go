@@ -9,10 +9,10 @@ import (
 )
 
 func main() {
-	config.Carregar()
+	config.LoadConfig()
 
 	fmt.Println("API running!")
-	r := router.Gerar()
+	r := router.Generate()
 
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.Porta), r))
+	log.Fatal(http.ListenAndServe(fmt.Sprintf("localhost:%d", config.Port), r))
 }
