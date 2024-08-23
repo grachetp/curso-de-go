@@ -26,14 +26,11 @@ func LoadConfig() {
 		Port = 9000
 	}
 
-	ConnString = fmt.Sprintf("%s:%s@/%s?charset=utf8&parseTime=True&loc=Local",
-		os.Getenv("BD_USER"),
-		os.Getenv("BD_PASSWORD"),
-		os.Getenv("BD_NAME"),
+	ConnString = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
+		os.Getenv("DB_USER"),
+		os.Getenv("DB_PASSWORD"),
+		"0.0.0.0",
+		"3306",
+		os.Getenv("DB_NAME"),
 	)
 }
-
-// DB_USUARIO=golang
-// DB_SENHA=golang
-// DB_NOME=devbook
-// API_PORT=5000
